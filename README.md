@@ -21,5 +21,5 @@
 ### How can you run it? easy
 
 ## Just run the following scripts:
-` docker build -t "fast_zero" .`
-` docker compose up`
+- ` docker build -t "fast_zero" .`
+- ` docker compose up`
