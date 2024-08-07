@@ -1,18 +1,30 @@
 from sqlalchemy import select
 
-from models.models import User
+from models.models import Todo, User
 
 
 def test_create_user(session):
-    user = User(
-        username='Dayvd',
-        email='ally@gmail.com',
-        password='dayvd123',
-    )
-
-    session.add(user)
+    new_user = User(username='dayvd10', password='123', email='dayvd@test.com')
+    session.add(new_user)
     session.commit()
 
-    result = session.scalar(select(User).where(User.email == 'ally@gmail.com'))
+    user = session.scalar(select(User).where(User.username == 'dayvd10'))
 
-    assert result.username == 'Dayvd'
+    assert user.username == 'dayvd10'
+
+
+def test_create_todo(session, user: User):
+    todo = Todo(
+        title='Test Todo',
+        description='Test Desc',
+        state='draft',
+        user_id=user.id,
+    )
+
+    session.add(todo)
+    session.commit()
+    session.refresh(todo)
+
+    user = session.scalar(select(User).where(User.id == user.id))
+
+    assert todo in user.todos

@@ -6,14 +6,15 @@ from security.security import create_access_token, settings
 
 
 def test_jwt():
-    data = {'sub': 'test@test.com'}
+    data = {'test': 'test'}
     token = create_access_token(data)
-    result = decode(
+
+    decoded = decode(
         token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM]
     )
 
-    assert result['sub'] == data['sub']
-    assert result['exp']
+    assert decoded['test'] == data['test']
+    assert decoded['exp']
 
 
 def test_jwt_invalid_token(client):
