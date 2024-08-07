@@ -1,10 +1,25 @@
 # This is an amazing todo list made with FastAPI
 
-## In this project I used
+## In this project I used:  
 
-- fastapi
-- pytest
-- alembic
-- sqlalchemy
+- Fastapi
+- SQLalchemy
+- Pydantic
+- Swagger
+- Factory-boy
+- Docker
+- Pytest
+- Alembic
+- Sqlalchemy
+- Pyenv
+- Poetry
+- Taskpy
+- Ruff
+- http
+- JWT
 
-### Note: i will upload the application in Docker, the project is not finished yet
+### How can you run it? easy
+
+## Just run the following scripts:
+` docker build -t "fast_zero" .`
+` docker compose up`
